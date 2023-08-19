@@ -1,18 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
+using Environment;
 using UnityEngine;
 
-public class PlayerMoveController : MonoBehaviour
+namespace Player
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerMoveController : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private Transform _transform;
+        [SerializeField] private float _verticaldSpeed = 3;
+        [SerializeField] private float _horizontaldSpeed = 4;
+    
+        private void Update()
+        {
+            MoveForward();
 
-    // Update is called once per frame
-    void Update()
-    {
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                if (_transform.position.x > TrackBoundary.leftSide)
+                {
+                    MoveHorizontally(EDirection.Left);
+                }
+            }
         
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                if (_transform.position.x < TrackBoundary.rightSide)
+                {
+                    MoveHorizontally(EDirection.Right);
+                }
+            }
+        }
+
+        private void MoveForward()
+        {
+            Vector3 newPosition = Vector3.forward * (_verticaldSpeed * Time.deltaTime);
+            _transform.Translate(newPosition, Space.World);
+        }
+
+        private void MoveHorizontally(EDirection iDirection)
+        {
+            float speed = _horizontaldSpeed * (int)iDirection;
+            Vector3 newPosition = Vector3.right * (speed * Time.deltaTime);
+        
+            _transform.Translate(newPosition);
+        }
+
+        private enum EDirection
+        {
+            Right = 1,
+            Left = -1
+        }
     }
 }
