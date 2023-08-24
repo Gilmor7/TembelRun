@@ -6,28 +6,97 @@ namespace Menu
 {
     public class MainMenuController : MonoBehaviour
     {
-        public void PlayGame()
+        //Panels/Containers
+        [SerializeField] private GameObject mainMenuContainer;
+        [SerializeField] private GameObject instructionsPanel;
+        [SerializeField] private GameObject highScoresPanel;
+        [SerializeField] private GameObject quitPanel;
+        
+        //Buttons
+        [SerializeField] private Button buttonPlay;
+        [SerializeField] private Button buttonInstructions;
+        [SerializeField] private Button buttonHighScores;
+        [SerializeField] private Button buttonQuit;
+        [SerializeField] private Button buttonConfirmQuit;
+        [SerializeField] private Button buttonCancelQuit;
+        [SerializeField] private Button buttonQuitInstructions;
+        [SerializeField] private Button buttonQuitHighScores;
+        
+        private void Awake()
+        {
+            buttonPlay.onClick.AddListener(PlayGame);
+            buttonInstructions.onClick.AddListener(DisplayInstructionsPanel);
+            buttonHighScores.onClick.AddListener(DisplayHighScorePanel);
+            buttonQuit.onClick.AddListener(DisplayQuitPanel);
+            buttonConfirmQuit.onClick.AddListener(QuitGame);
+            buttonCancelQuit.onClick.AddListener(CloseQuitPanel);
+            buttonQuitInstructions.onClick.AddListener(CloseInstructionsPanel);
+            buttonQuitHighScores.onClick.AddListener(CloseHighScorePanel);
+      
+            instructionsPanel.SetActive(false);
+            quitPanel.SetActive(false);
+            highScoresPanel.SetActive(false);
+        }
+        private void PlayGame()
         {
             SceneManager.LoadSceneAsync(1);
         }
 
-        public void DisplayHighScore()
+        private void DisplayHighScorePanel()
         {
-            
+            mainMenuContainer.SetActive(false);
+            highScoresPanel.SetActive(true);
+        }
+        
+        private void CloseHighScorePanel()
+        {
+            highScoresPanel.SetActive(false);
+            mainMenuContainer.SetActive(true);
         }
 
-        public void DisplayGameInstructions()
+        private void DisplayInstructionsPanel()
         {
-            
+            mainMenuContainer.SetActive(false);
+            instructionsPanel.SetActive(true);
+        }
+        
+        private void CloseInstructionsPanel()
+        {
+            instructionsPanel.SetActive(false);
+            mainMenuContainer.SetActive(true);
+        }
+        
+        private void DisplayQuitPanel()
+        {
+            mainMenuContainer.SetActive(false);
+            quitPanel.SetActive(true);
+        }
+        
+        private void CloseQuitPanel()
+        {
+            quitPanel.SetActive(false);
+            mainMenuContainer.SetActive(true);
         }
 
-        public void QuitGame()
+        private void QuitGame()
         {
             #if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
             #else
                     Application.Quit();
             #endif
+        }
+        
+        private void OnDestroy()
+        {
+            buttonPlay.onClick.RemoveListener(PlayGame);
+            buttonInstructions.onClick.RemoveListener(DisplayInstructionsPanel);
+            buttonHighScores.onClick.RemoveListener(DisplayHighScorePanel);
+            buttonQuit.onClick.RemoveListener(DisplayQuitPanel);
+            buttonConfirmQuit.onClick.RemoveListener(QuitGame);
+            buttonCancelQuit.onClick.RemoveListener(CloseQuitPanel);
+            buttonQuitInstructions.onClick.RemoveListener(CloseInstructionsPanel);
+            buttonQuitHighScores.onClick.RemoveListener(CloseHighScorePanel);
         }
     }
 }
