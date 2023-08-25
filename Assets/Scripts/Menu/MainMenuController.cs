@@ -6,13 +6,13 @@ namespace Menu
 {
     public class MainMenuController : MonoBehaviour
     {
-        //Panels/Containers
+        [Header("Panels/Containers")]
         [SerializeField] private GameObject mainMenuContainer;
         [SerializeField] private GameObject instructionsPanel;
         [SerializeField] private GameObject highScoresPanel;
         [SerializeField] private GameObject quitPanel;
         
-        //Buttons
+        [Header("Buttons")]
         [SerializeField] private Button buttonPlay;
         [SerializeField] private Button buttonInstructions;
         [SerializeField] private Button buttonHighScores;

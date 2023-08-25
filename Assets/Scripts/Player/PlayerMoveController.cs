@@ -5,14 +5,23 @@ namespace Player
 {
     public class PlayerMoveController : MonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] private Transform _transform;
+        
+        [Header("Movement Properties")]
         [SerializeField] private float _verticaldSpeed = 3;
         [SerializeField] private float _horizontaldSpeed = 4;
+        [SerializeField] public static bool canMove = false;
     
         private void Update()
         {
             MoveForward();
 
+            if (!canMove)
+            {
+                return;
+            }
+            
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 if (_transform.position.x > TrackBoundary.leftSide)
@@ -20,7 +29,7 @@ namespace Player
                     MoveHorizontally(EDirection.Left);
                 }
             }
-        
+            
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 if (_transform.position.x < TrackBoundary.rightSide)
