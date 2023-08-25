@@ -5,7 +5,10 @@ namespace Player
 {
     public class PlayerMoveController : MonoBehaviour
     {
+        [Header("Components")]
         [SerializeField] private Transform _transform;
+        
+        [Header("Movement Properties")]
         [SerializeField] private float _verticaldSpeed = 3;
         [SerializeField] private float _horizontaldSpeed = 4;
     
