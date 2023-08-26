@@ -4325,6 +4325,7 @@ GameObject:
   - component: {fileID: 819387664}
   - component: {fileID: 819387663}
   - component: {fileID: 819387662}
+  - component: {fileID: 819387665}
   m_Layer: 0
   m_Name: Rock_Large
   m_TagString: Untagged
@@ -4356,7 +4357,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819387660}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -4411,6 +4412,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819387660}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &819387665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819387660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38833830076609e4db538c521daed9d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 2112134572}
+  _characterModel: {fileID: 233871761578779128}
 --- !u!1001 &839960010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13344,6 +13359,7 @@ GameObject:
   - component: {fileID: 2112134574}
   - component: {fileID: 2112134573}
   - component: {fileID: 2112134577}
+  - component: {fileID: 2112134578}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -13422,7 +13438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112134572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 1.292, z: -81.18}
+  m_LocalPosition: {x: 3.5, y: 1.292, z: -58.68}
   m_LocalScale: {x: 0.75, y: 1.5, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13446,6 +13462,24 @@ MonoBehaviour:
   _transform: {fileID: 2112134576}
   _verticaldSpeed: 5
   _horizontaldSpeed: 4
+--- !u!143 &2112134578
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112134572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2133671510
 PrefabInstance:
   m_ObjectHideFlags: 0
