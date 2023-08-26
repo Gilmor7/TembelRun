@@ -11,7 +11,7 @@ namespace Player
         [Header("Movement Properties")]
         [SerializeField] private float _verticaldSpeed = 3;
         [SerializeField] private float _horizontaldSpeed = 4;
-        [SerializeField] public static bool canMove = false;
+        public static bool canMove = false;
     
         private void Update()
         {
