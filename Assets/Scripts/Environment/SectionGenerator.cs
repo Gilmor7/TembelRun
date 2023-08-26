@@ -1,29 +1,32 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SectionGenerator : MonoBehaviour
+namespace Environment
 {
-    private const int SECTION_Z_POS_OFFSET = 50;
-    private bool isCreateSection = false;
-
-    [SerializeField] private int sectionNumber;
-    [SerializeField] private GameObject[] sections;
-    [SerializeField] private int zPos = SECTION_Z_POS_OFFSET;
-    
-    void Update()
+    public class SectionGenerator : MonoBehaviour
     {
-        if (!isCreateSection) {
-            isCreateSection = true;
-            StartCoroutine(generateSection());
-        }
-    }
+        private const int SectionZPosOffset = 50;
+        private bool _isCreateSection = false;
 
-    private IEnumerator generateSection() {
-        sectionNumber = Random.Range(0, 3);
-        Instantiate(sections[sectionNumber], new Vector3(0f, 0f, zPos), Quaternion.identity);
-        zPos += SECTION_Z_POS_OFFSET;
-        yield return new WaitForSeconds(2);
-        isCreateSection = false;
+        [SerializeField] private int _sectionNumber;
+        [SerializeField] private GameObject[] _sections;
+        [SerializeField] private int _zPos = SectionZPosOffset;
+    
+        void Update()
+        {
+            if (!_isCreateSection) 
+            {
+                _isCreateSection = true;
+                StartCoroutine(GenerateSection());
+            }
+        }
+
+        private IEnumerator GenerateSection() {
+            _sectionNumber = Random.Range(0, 3);
+            Instantiate(_sections[_sectionNumber], new Vector3(0f, 0f, _zPos), Quaternion.identity);
+            _zPos += SectionZPosOffset;
+            yield return new WaitForSeconds(2);
+            _isCreateSection = false;
+        }
     }
 }
