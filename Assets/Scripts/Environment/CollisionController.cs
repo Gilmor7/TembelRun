@@ -11,6 +11,7 @@ namespace Environment
         [SerializeField] private GameObject _player;
         [SerializeField] private GameObject _characterModel;
         [SerializeField] private GameObject _camera;
+        [SerializeField] private GameObject _gameManager;
         
         [Header("Audio Sources")]
         [SerializeField] private AudioSource _crashSound;
@@ -20,9 +21,10 @@ namespace Environment
         private void OnTriggerEnter(Collider other)
         {
             StopPlayerMovement();
-            PlayThePlayerCollisionAnimation();
+            TriggerPlayerCollisionAnimation();
             PlayCrashSoundEffect();
-            PlayShakingCameraAnimation();
+            TriggerShakingCameraAnimation();
+            TriggerEndRunRoutine();
         }
 
         private void PlayCrashSoundEffect()
@@ -36,15 +38,20 @@ namespace Environment
             _player.GetComponent<PlayerMoveController>().enabled = false;
         }
 
-        private void PlayThePlayerCollisionAnimation()
+        private void TriggerPlayerCollisionAnimation()
         {
             Animator playerAnimator = _characterModel.GetComponent<Animator>();
             playerAnimator.Play(CollisionAnimation);
         }
         
-        private void PlayShakingCameraAnimation()
+        private void TriggerShakingCameraAnimation()
         { 
             _camera.GetComponent<Animator>().enabled = true;
+        }
+
+        private void TriggerEndRunRoutine()
+        {
+            _gameManager.GetComponent<EndGameController>().enabled = true;
         }
     }
 }
