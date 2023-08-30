@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectRotator : MonoBehaviour
+namespace Collectibles
 {
-    [SerializeField] private int rotationSpeed = 3;
-
-    void Update()
+    public class ObjectRotator : MonoBehaviour
     {
-        transform.Rotate(0f, rotationSpeed, 0f, Space.World);        
+        [SerializeField] private int _rotationSpeed = 3;
+
+        void Update()
+        {
+            transform.Rotate(0f, _rotationSpeed, 0f, Space.World);        
+        }
     }
 }

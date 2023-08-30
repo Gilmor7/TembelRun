@@ -39,7 +39,7 @@ namespace Menu
         }
         private void PlayGame()
         {
-            SceneManager.LoadSceneAsync(1);
+            SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
         }
 
         private void DisplayHighScorePanel()
