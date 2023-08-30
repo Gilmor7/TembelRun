@@ -1,6 +1,8 @@
 using System.Collections;
+using Collectibles;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Common;
 
 namespace Environment
 {
@@ -13,6 +15,8 @@ namespace Environment
         [SerializeField] private GameObject _liveScoreDisplay;
         [SerializeField] private GameObject _endScreen;
         [SerializeField] private GameObject _fadeOutScreen;
+
+        public HighScoreData highScoreData;
 
         void Start()
         {
@@ -28,6 +32,13 @@ namespace Environment
             _fadeOutScreen.SetActive(true);
             yield return new WaitForSeconds(_delay);
             SceneManager.LoadSceneAsync(0);
+            UpdateHighScores();
+        }
+
+        private void UpdateHighScores()
+        {
+            int newScore = CollectiblesController.GetBottleCount();
+            highScoreData.UpdateHighScore(newScore);
         }
     }
 }
