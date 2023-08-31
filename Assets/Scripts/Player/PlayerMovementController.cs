@@ -19,12 +19,12 @@ namespace Player
         [SerializeField] private float _horizontaldSpeed = 4;
 
         [Header("Jumping Properties")] 
+        [SerializeField] private float _jumpHeight = 1.2f;
         [SerializeField] private float _groundCheckDistance = 0.4f;
-        [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private float _gravity = -9.81f;
+        [SerializeField] private LayerMask _groundLayer;
 
         private Vector3 _velocity;
-        private float _jumpHeight = 1.2f;
         private bool _isGrounded = true;
 
         void Update()

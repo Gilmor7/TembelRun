@@ -17396,11 +17396,12 @@ MonoBehaviour:
   _modelAnimator: {fileID: 609447803509652291}
   _verticaldSpeed: 5
   _horizontaldSpeed: 4
+  _jumpHeight: 1.25
   _groundCheckDistance: 0.4
+  _gravity: -15
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  _gravity: -9.81
 --- !u!1001 &2133671510
 PrefabInstance:
   m_ObjectHideFlags: 0
