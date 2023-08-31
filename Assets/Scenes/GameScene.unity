@@ -17239,6 +17239,7 @@ GameObject:
   - component: {fileID: 2112134577}
   - component: {fileID: 2112134578}
   - component: {fileID: 2112134580}
+  - component: {fileID: 2112134581}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -17320,7 +17321,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112134572}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5966b66b73f6704ba23889207bd1e12, type: 3}
   m_Name: 
@@ -17361,6 +17362,22 @@ MonoBehaviour:
   _characterAnimator: {fileID: 609447803509652291}
   _camera: {fileID: 1215884325}
   _crashSound: {fileID: 2056486245}
+--- !u!114 &2112134581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112134572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd1940387d412143bffec3daeff4e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterTransform: {fileID: 2112134576}
+  _characterController: {fileID: 2112134578}
+  _verticaldSpeed: 5
+  _horizontaldSpeed: 4
 --- !u!1001 &2133671510
 PrefabInstance:
   m_ObjectHideFlags: 0
