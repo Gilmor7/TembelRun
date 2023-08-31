@@ -6,26 +6,43 @@ namespace Player
 {
     public class PlayerMovementController : MonoBehaviour
     {
-        private const string JumpingAnimation = "Jump";
-        private const string RunningAnimation = "Drunk Run Forward";
+        private const string JumpingAnimationTrigger = "JumpTrigger";
 
-        [Header("Components")] [SerializeField]
-        private Transform _characterTransform;
-
+        [Header("Components")] 
         [SerializeField] private CharacterController _characterController;
+        [SerializeField] private Transform _characterTransform;
+        [SerializeField] private Transform _groundCheckTransform;
+        [SerializeField] private Animator _modelAnimator;
 
-        [Header("Movement Properties")] [SerializeField]
-        private float _verticaldSpeed = 5;
-
+        [Header("Movement Properties")] 
+        [SerializeField] private float _verticaldSpeed = 5;
         [SerializeField] private float _horizontaldSpeed = 4;
+
+        [Header("Jumping Properties")] 
+        [SerializeField] private float _groundCheckDistance = 0.4f;
+        [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private float _gravity = -9.81f;
+
+        private Vector3 _velocity;
+        private float _jumpHeight = 1.2f;
+        private bool _isGrounded = true;
 
         void Update()
         {
             float moveX = GetXDirection() * _horizontaldSpeed;
             float moveZ = 1 * _verticaldSpeed;
-
+            
             Vector3 move = new Vector3(moveX, 0, moveZ);
             _characterController.Move(move * Time.deltaTime);
+
+            _isGrounded = CheckIfGrounded();
+            if (Input.GetButtonDown("Jump") && GameManager.Instance.IsPlaying && _isGrounded)
+            {
+                Jump();
+            }
+            
+            ApplyGravity();
+            _characterController.Move(_velocity * Time.deltaTime);
         }
     
         // Negative return value represents left direction and positive right direction
@@ -53,6 +70,27 @@ namespace Player
             }
 
             return x;
+        }
+
+        private bool CheckIfGrounded()
+        {
+            return Physics.CheckSphere(_groundCheckTransform.position, _groundCheckDistance, _groundLayer);
+        }
+
+        private void ApplyGravity()
+        {
+            if (_isGrounded && _velocity.y < 0)
+            {
+                _velocity.y = -2f;
+            }
+
+            _velocity.y += _gravity * Time.deltaTime;
+        }
+
+        private void Jump()
+        {
+            _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
+            _modelAnimator.SetTrigger(JumpingAnimationTrigger);
         }
     }
 }
