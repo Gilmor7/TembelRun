@@ -1,3 +1,4 @@
+using Managers;
 using Player;
 using UnityEngine;
 
@@ -11,7 +12,6 @@ namespace Environment
         [SerializeField] private GameObject _player;
         [SerializeField] private GameObject _characterModel;
         [SerializeField] private GameObject _camera;
-        [SerializeField] private GameObject _gameManager;
         
         [Header("Audio Sources")]
         [SerializeField] private AudioSource _crashSound;
@@ -51,7 +51,7 @@ namespace Environment
 
         private void TriggerEndRunRoutine()
         {
-            _gameManager.GetComponent<EndGameController>().enabled = true;
+            GameManager.Instance.EndGameSession();
         }
     }
 }
