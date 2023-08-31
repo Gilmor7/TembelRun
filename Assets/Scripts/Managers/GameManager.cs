@@ -1,6 +1,7 @@
 using System.Collections;
 using Collectibles;
 using Common;
+using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,8 @@ namespace Managers
         
         [SerializeField] private float _addDistanceDelay = 0.5f;
 
+        [SerializeField] private PlayerController _player;
+        
         [SerializeField] private GameObject _liveScoreDisplay;
         [SerializeField] private GameObject _endScreen;
         [SerializeField] private GameObject _fadeOutScreen;
@@ -75,6 +78,11 @@ namespace Managers
         {
             _bottleCount = 0;
             _distance = 0;
+        }
+
+        public void PlayerCrashIntoObstacle()
+        {
+            _player.OnCrash();
         }
 
         public void CollectBottle(Bottle bottle) {

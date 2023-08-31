@@ -59,11 +59,11 @@ namespace Menu
         
         private void SetHighScoresText()
         {
-            int i = 1;
+            int i = 0;
             
             foreach (int score in _highScoreData.HighScores)
             {
-                _highScores[i].text = $"{i}:  {score.ToString()}";
+                _highScores[i].text = $"{i + 1}:  {score.ToString()}";
                 i++;
             }
         }
