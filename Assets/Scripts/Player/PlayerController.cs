@@ -28,7 +28,7 @@ namespace Player
             _crashSound.Play();
         }
 
-        private void StopPlayerMovement()
+        private void StopPlayerMovement() //Adjust here
         {
             this.gameObject.GetComponent<PlayerMoveController>().enabled = false;
             this.gameObject.GetComponent<PlayerMovementController>().enabled = false;
