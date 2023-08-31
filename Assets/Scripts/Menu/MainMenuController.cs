@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Common;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,6 +25,11 @@ namespace Menu
         [SerializeField] private Button buttonQuitInstructions;
         [SerializeField] private Button buttonQuitHighScores;
         
+        [Header("Text Mesh Pro")] 
+        [SerializeField] private List<TextMeshProUGUI> _highScores;
+
+        [SerializeField]private HighScoreData _highScoreData;
+        
         private void Awake()
         {
             buttonPlay.onClick.AddListener(PlayGame);
@@ -44,8 +52,20 @@ namespace Menu
 
         private void DisplayHighScorePanel()
         {
+            SetHighScoresText();
             mainMenuContainer.SetActive(false);
             highScoresPanel.SetActive(true);
+        }
+        
+        private void SetHighScoresText()
+        {
+            int i = 1;
+            
+            foreach (int score in _highScoreData.HighScores)
+            {
+                _highScores[i].text = $"{i}:  {score.ToString()}";
+                i++;
+            }
         }
         
         private void CloseHighScorePanel()

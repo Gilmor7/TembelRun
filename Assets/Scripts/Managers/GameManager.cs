@@ -1,5 +1,6 @@
 using System.Collections;
 using Collectibles;
+using Common;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +16,8 @@ namespace Managers
         [SerializeField] private GameObject _liveScoreDisplay;
         [SerializeField] private GameObject _endScreen;
         [SerializeField] private GameObject _fadeOutScreen;
-
+        [SerializeField] private HighScoreData _highScoreData;
+        
         [SerializeField] private AudioSource _backgroundMusic;
 
         private int _bottleCount;
@@ -97,6 +99,17 @@ namespace Managers
             _shouldAddDistance = false;
         }
         
+        private void UpdateHighScores(int bottleCount, int distance)
+        {
+            int newScore = CalculateScore(bottleCount, distance);
+            _highScoreData.UpdateHighScore(newScore);
+        }
+
+        private int CalculateScore(int bottleCount, int distance)
+        {
+            return bottleCount + distance;
+        }
+        
         private IEnumerator WaitForAnimationAndStart(float duration)
         {
             yield return new WaitForSeconds(duration);
@@ -112,6 +125,7 @@ namespace Managers
             yield return new WaitForSeconds(EndScreenDelay);
             _fadeOutScreen.SetActive(true);
             yield return new WaitForSeconds(EndScreenDelay);
+            UpdateHighScores(_bottleCount, _distance);
             ResetSession();
             SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
         }

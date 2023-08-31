@@ -518,6 +518,7 @@ MonoBehaviour:
   _liveScoreDisplay: {fileID: 1649624137}
   _endScreen: {fileID: 912445339}
   _fadeOutScreen: {fileID: 537773421}
+  _highScoreData: {fileID: 11400000, guid: 978f3bc0cefa4b94c9ffc5328ded59dc, type: 2}
   _backgroundMusic: {fileID: 1763120149}
 --- !u!1001 &80013502
 PrefabInstance:
