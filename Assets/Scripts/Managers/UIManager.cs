@@ -30,11 +30,9 @@ namespace Managers
 
         protected void Awake()
         {
-            if (Instance == null)
+            if (Instance == null) // Implemented as singleton only in the scope of the game scene
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
-                
                 _countdown.gameObject.SetActive(false);
             }
             else

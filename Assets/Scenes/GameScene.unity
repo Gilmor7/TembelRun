@@ -457,8 +457,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 41463907}
-  - component: {fileID: 41463908}
   - component: {fileID: 41463912}
+  - component: {fileID: 41463913}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -484,24 +484,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &41463908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41463905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f2980393de554479fe5c2f946d474c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sectionNumber: 0
-  _sections:
-  - {fileID: 1993536355}
-  - {fileID: 356679594}
-  - {fileID: 91911077}
-  _zPos: 50
 --- !u!114 &41463912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +503,24 @@ MonoBehaviour:
   _fadeOutScreen: {fileID: 537773421}
   _highScoreData: {fileID: 11400000, guid: 978f3bc0cefa4b94c9ffc5328ded59dc, type: 2}
   _backgroundMusic: {fileID: 1763120149}
+--- !u!114 &41463913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41463905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f2980393de554479fe5c2f946d474c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sectionNumber: 0
+  _sections:
+  - {fileID: 1993536355}
+  - {fileID: 356679594}
+  - {fileID: 91911077}
+  _zPos: 50
 --- !u!1001 &80013502
 PrefabInstance:
   m_ObjectHideFlags: 0
