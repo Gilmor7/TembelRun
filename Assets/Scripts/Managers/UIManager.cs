@@ -16,6 +16,7 @@ namespace Managers
         [SerializeField] private TextMeshProUGUI _bottleEndCountDisplay;
         [SerializeField] private TextMeshProUGUI _distanceDisplay;
         [SerializeField] private TextMeshProUGUI _distanceEndDisplay;
+        [SerializeField] private TextMeshProUGUI _scoreEndDisplay;
         [SerializeField] private TextMeshProUGUI _countdownLabel;
         
         [SerializeField] private GameObject _countdown;
@@ -46,15 +47,16 @@ namespace Managers
             _distanceDisplay.text = distance.ToString();
         }
         
-        public void SetScore(int score)
+        public void SetBottles(int score)
         {
             _bottleCountDisplay.text = score.ToString();
         }
         
-        public void SetEndScreenValues(int distance, int score)
+        public void SetEndScreenValues(int distance, int bottlesCount, int totalScore)
         {
-            _bottleEndCountDisplay.text = score.ToString();
+            _bottleEndCountDisplay.text = bottlesCount.ToString();
             _distanceEndDisplay.text = distance.ToString();
+            _scoreEndDisplay.text = totalScore.ToString();
         }
         
         public IEnumerator PlayCountdownAnimation()

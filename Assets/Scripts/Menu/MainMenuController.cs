@@ -28,7 +28,7 @@ namespace Menu
         [Header("Text Mesh Pro")] 
         [SerializeField] private List<TextMeshProUGUI> _highScores;
 
-        [SerializeField]private HighScoreData _highScoreData;
+        [SerializeField] private HighScoreData _highScoreData;
         
         private void Awake()
         {
