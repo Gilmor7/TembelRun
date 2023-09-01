@@ -87,7 +87,7 @@ namespace Managers
         public void CollectBottle(Bottle bottle) {
             _bottleCount += SingleBottleScore;
             bottle.GetCollected();
-            UIManager.Instance.SetScore(_bottleCount);
+            UIManager.Instance.SetBottles(_bottleCount);
         }
 
         private void TrackPlayerDistance()
@@ -105,12 +105,6 @@ namespace Managers
             yield return new WaitForSeconds(_addDistanceDelay);
             _shouldAddDistance = false;
         }
-        
-        private void UpdateHighScores(int bottleCount, int distance)
-        {
-            int newScore = CalculateScore(bottleCount, distance);
-            _highScoreData.UpdateHighScore(newScore);
-        }
 
         private int CalculateScore(int bottleCount, int distance)
         {
@@ -125,14 +119,16 @@ namespace Managers
         
         private IEnumerator EndGameRoutine()
         {
-            UIManager.Instance.SetEndScreenValues(_distance, _bottleCount);
+            int newScore = CalculateScore(_bottleCount, _distance);
+            
+            UIManager.Instance.SetEndScreenValues(_distance, _bottleCount, newScore);
             yield return new WaitForSeconds(EndScreenDelay);
             _liveScoreDisplay.SetActive(false);
             _endScreen.SetActive(true);
             yield return new WaitForSeconds(EndScreenDelay);
             _fadeOutScreen.SetActive(true);
             yield return new WaitForSeconds(EndScreenDelay);
-            UpdateHighScores(_bottleCount, _distance);
+            _highScoreData.UpdateHighScore(newScore);
             ResetSession();
             SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
         }
