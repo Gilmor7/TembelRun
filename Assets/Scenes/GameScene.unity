@@ -17780,9 +17780,10 @@ MonoBehaviour:
   _characterTransform: {fileID: 2112134576}
   _groundCheckTransform: {fileID: 454633621}
   _modelAnimator: {fileID: 609447803509652291}
-  _verticaldSpeed: 5
   _horizontaldSpeed: 4
-  _jumpHeight: 1.25
+  _verticalSpeed: 5
+  _verticalMaxSpeed: 15
+  _jumpHeight: 1.2
   _groundCheckDistance: 0.4
   _gravity: -15
   _groundLayer:

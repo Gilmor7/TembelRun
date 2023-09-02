@@ -6,7 +6,9 @@ namespace Player
 {
     public class PlayerMovementController : MonoBehaviour
     {
-        private const string JumpingAnimationTrigger = "JumpTrigger";
+        private const float IntervalTime = 15f;
+        private readonly string _jumpingAnimationTrigger = "JumpTrigger";
+        private readonly string _blendParamName = "Blend";
 
         [Header("Components")] 
         [SerializeField] private CharacterController _characterController;
@@ -15,8 +17,9 @@ namespace Player
         [SerializeField] private Animator _modelAnimator;
 
         [Header("Movement Properties")] 
-        [SerializeField] private float _verticaldSpeed = 5;
         [SerializeField] private float _horizontaldSpeed = 4;
+        [SerializeField] private float _verticalSpeed = 5;
+        [SerializeField] private float _verticalMaxSpeed = 15;
 
         [Header("Jumping Properties")] 
         [SerializeField] private float _jumpHeight = 1.2f;
@@ -27,11 +30,17 @@ namespace Player
         private Vector3 _velocity;
         private bool _isGrounded = true;
 
+        private void Start()
+        {
+            // Increase game difficulty each IntervalTime (in seconds).
+            InvokeRepeating("IncreaseCharacterSpeed", IntervalTime, IntervalTime);
+        }
+
         void Update()
         {
             float moveX = GetXDirection() * _horizontaldSpeed;
-            float moveZ = 1 * _verticaldSpeed;
-            
+            float moveZ = 1 * _verticalSpeed;
+
             Vector3 move = new Vector3(moveX, 0, moveZ);
             _characterController.Move(move * Time.deltaTime);
 
@@ -44,7 +53,20 @@ namespace Player
             ApplyGravity();
             _characterController.Move(_velocity * Time.deltaTime);
         }
-    
+
+        private void IncreaseCharacterSpeed()
+        {
+            if (_verticalSpeed < _verticalMaxSpeed)
+            {
+                _verticalSpeed += 0.5f;
+                _modelAnimator.SetFloat(_blendParamName, _verticalSpeed);
+            }
+            else
+            {
+                CancelInvoke("IncreaseCharacterSpeed");
+            }
+        }
+
         // Negative return value represents left direction and positive right direction
         private float GetXDirection()
         {
@@ -90,7 +112,7 @@ namespace Player
         private void Jump()
         {
             _velocity.y = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
-            _modelAnimator.SetTrigger(JumpingAnimationTrigger);
+            _modelAnimator.SetTrigger(_jumpingAnimationTrigger);
         }
     }
 }
