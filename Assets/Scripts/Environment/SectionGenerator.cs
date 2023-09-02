@@ -23,8 +23,9 @@ namespace Environment
         }
 
         private IEnumerator GenerateSectionRoutine() {
-            _sectionNumber = Random.Range(0, 3);
-            Instantiate(_sections[_sectionNumber], new Vector3(0f, 0f, _zPos), Quaternion.identity);
+            _sectionNumber = Random.Range(0, 6);
+            GameObject generatedSection = Instantiate(_sections[_sectionNumber], new Vector3(0f, 0f, _zPos), Quaternion.identity);
+            generatedSection.name = "GeneratedSection";
             _zPos += SectionZPosOffset;
             yield return new WaitForSeconds(2);
             _shouldCreateSection = false;

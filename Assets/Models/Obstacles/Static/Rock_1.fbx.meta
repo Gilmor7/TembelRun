@@ -1,44 +1,15 @@
 fileFormatVersion: 2
-guid: eea2d2c1b6a69e34a8f8b5e3b6f941f9
-timeCreated: 1504768173
+guid: b2d7d77df4449b24fb2fffe6ca115874
+timeCreated: 1504768177
 licenseType: Store
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Leaves
-    100002: Leaves_1
-    100004: Leaves_2
-    100006: Leaves_3
-    100008: Leaves_4
-    100010: Leaves_5
-    100012: //RootNode
-    100014: Tree_2
-    400000: Leaves
-    400002: Leaves_1
-    400004: Leaves_2
-    400006: Leaves_3
-    400008: Leaves_4
-    400010: Leaves_5
-    400012: //RootNode
-    400014: Tree_2
-    2300000: Leaves_1
-    2300002: Leaves_2
-    2300004: Leaves_3
-    2300006: Leaves_4
-    2300008: Leaves_5
-    2300010: Tree_2
-    3300000: Leaves_1
-    3300002: Leaves_2
-    3300004: Leaves_3
-    3300006: Leaves_4
-    3300008: Leaves_5
-    3300010: Tree_2
-    4300000: Tree_2
-    4300002: Leaves_5
-    4300004: Leaves_4
-    4300006: Leaves_2
-    4300008: Leaves_1
-    4300010: Leaves_3
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Rock_1
   materials:
     importMaterials: 1
     materialName: 0
