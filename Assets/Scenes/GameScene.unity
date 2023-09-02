@@ -497,7 +497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addDistanceDelay: 0.5
-  _player: {fileID: 2112134580}
+  _playerTransform: {fileID: 2112134576}
+  _playerController: {fileID: 2112134580}
   _liveScoreDisplay: {fileID: 1649624137}
   _endScreen: {fileID: 912445339}
   _fadeOutScreen: {fileID: 537773421}
