@@ -13,8 +13,10 @@ namespace Managers
         private const float EndScreenDelay = 3f;
         
         [SerializeField] private float _addDistanceDelay = 0.5f;
+        [SerializeField] private Transform _playerTransform;
+        private float _startingZPosition; 
 
-        [SerializeField] private PlayerController _player;
+        [SerializeField] private PlayerController _playerController;
         
         [SerializeField] private GameObject _liveScoreDisplay;
         [SerializeField] private GameObject _endScreen;
@@ -63,6 +65,7 @@ namespace Managers
 
         private void StartActualGame()
         {
+            _startingZPosition = _playerTransform.position.z;
             _backgroundMusic.Play();
             IsPlaying = true;
         }
@@ -81,7 +84,7 @@ namespace Managers
 
         public void PlayerCrashIntoObstacle()
         {
-            _player.OnCrash();
+            _playerController.OnCrash();
         }
 
         public void CollectBottle(Bottle bottle) {
@@ -100,7 +103,7 @@ namespace Managers
         }
 
         private IEnumerator AddDistanceRoutine() {
-            _distance += 1;
+            _distance = (int) (_playerTransform.position.z - _startingZPosition);
             UIManager.Instance.SetDistance(_distance);
             yield return new WaitForSeconds(_addDistanceDelay);
             _shouldAddDistance = false;
